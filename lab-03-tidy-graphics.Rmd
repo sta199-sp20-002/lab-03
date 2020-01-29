@@ -1,0 +1,171 @@
+---
+title: "Lab 03 - Tidy Graphics and Teamwork"
+subtitle: "Due: Sunday, Feb 2 at 11:59pm"
+output:
+  tufte::tufte_html:
+    tufte_variant: "envisioned"
+    highlight: pygments
+    css: "sta199-labs.css"
+link-citations: yes
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(eval = FALSE, comment = "#>")
+```
+
+This will be the first team-based lab. Please be sure you are sitting with your
+lab group.
+
+# Getting Started
+
+## Clone Assignment Repo
+
+A repository has already been created for you and your teammates. Everyone in
+your team has access to the same repository.
+
+- Go to our GitHub course organization page: https://github.com/sta199-sp20-002
+
+- In addition to your private individual repositories, you should now see a
+  repository named lab-03-[github_team_name]. Go to that repository.
+  
+- Each person on the team should now clone the repository into RStudio Cloud.
+
+## Configure git
+
+Remember that we first have to configure RStudio Cloud to talk to GitHub. An 
+easy way to do this is to use the `use_git_config()` function from the 
+`usethis` package. 
+
+Type the following lines of code in the **`Console`** in RStudio filling in your 
+name and email address.
+
+```{r eval=FALSE}
+library(usethis)
+use_git_config(user.name="Your name", user.email="your-git-hub-email@email.edu")
+```
+
+## Password caching
+
+If you would like your git password cached for a week for this project, go to
+the **Terminal** tab (next to the **Console** tab) and enter the following at 
+the **Terminal's** prompt:
+
+```bash
+git config --global credential.helper 'cache --timeout 604800'
+```
+
+However, you will need to re-cache your credentials if you open a new project.
+
+## Project name: 
+
+In RStudio Cloud your project is called `Untitled Project`. Update the name of 
+your project to be "Lab 03 - Tidy Graphics and Teamwork".
+
+## Packages
+
+In this lab we will work with the `tidyverse` package. 
+Load the package with
+
+```{r}
+library(tidyverse)
+```
+
+# Data
+
+In the **Files** pane you will see a folder named `data`. In it are three
+CSV files. Your team will work with data in one of these files according
+to the following rule:
+
+| Lab Section         | Data            |
+|---------------------|-----------------|
+| 04: 1:25p - 2:40p   | `fishing.csv`   |
+| 05: 3:05p - 4:20p   | `employees.csv` |
+| 06: 4:40p - 5:55p   | `nerrs.csv`     |
+
+CSV files can be read into R using function `read_csv()`. In the function we'll
+need to specify where the file is located. We will also want to save the result
+so we can work with the data in subsequent steps. For example, if we had a
+file named `coronavirus.csv` in the `data` folder, I would read it into R with
+
+```{r eval=FALSE}
+coronavirus <- read_csv("data/coronavirus.csv")
+```
+
+Eric's Excel files that include the ugly graphic can be found in the folder
+named `eric`.
+
+# Using git and GitHub in a team-based environment
+
+The following exercises must be done in order. <b>Only one person should be
+pushing at a time.</b>
+
+1. Assign each person on your team a number 1 through 4. For teams of three,
+   Member 1 can take on the role of Member 4 in Exercise 5.
+
+2. **Member 1**: Change the author to your team name and include each group
+   member's name in the following format: 
+   `Team Name: Member 1, Member 2, Member 3, Member 4`. 
+   Add code to read in your team's corresponding CSV file and save the result 
+   with a meaningful name. Member 1 should stage, commit, and push the changes 
+   to GitHub.
+   
+   - Once Member 1 has pushed their work to GitHub, Members 2, 3, and 4 should
+     **Pull** the updated files from the team's GitHub repo. Team members 2, 3,
+     and 4 should now have the author information populated in their Rmd file
+     and code that reads in the data.
+     
+   - <b>Make sure you have the most up-date-version of all files before you
+     make more changes.</b>
+     
+3. **Member 2**: Use your assigned data and `ggplot()` to improve the original
+   visualization provided by Eric (see the corresponding Excel file in folder
+   `eric`). Members 1, 3, and 4 should all provide verbal
+   assistance and feedback, but only Member 2 should type the code. Once you
+   have a well-labelled visualization, Member 2 should stage, commit, and push 
+   the changes to GitHub.
+   
+   - Once Member 2 has pushed their work to GitHub, Members 1, 3, and 4 should
+   **Pull** the updated files from the team's GitHub repo. Team members 1, 3,
+   and 4 should now have the code that generates the improved graphic.
+   
+   - <b>Make sure you have the most up-date-version of all files before you
+     make more changes.</b>
+   
+4. **Member 3**: Include narrative that explains why the original graphic is
+   poor. You may want to comment on the labels, figure size, color choices, 
+   plot design, and more. Members 1, 2, and 4 should all provide verbal
+   assistance and feedback, but only Member 3 should type the narrative.
+   Once you have a clear and concise narrative, Member 3 should stage, 
+   commit, and push the changes to GitHub.
+   
+   - Once Member 3 has pushed their work to GitHub, Members 1, 2, and 4 should
+   **Pull** the updated files from the team's GitHub repo. Team members 1, 2,
+   and 4 should now have the narrative.
+   
+   - <b>Make sure you have the most up-date-version of all files before you
+     make more changes.</b>
+   
+5. **Member 4**: Include narrative that explains your graphic and why it is an
+   improvement over the original visualization. Explain your plot choice given
+   the variable types. Members 1, 2, and 3 should all provide verbal
+   assistance and feedback, but only Member 4 should type the narrative.
+   Once you have a clear and concise narrative, Member 4 should stage, 
+   commit, and push the changes to GitHub.
+   
+   - Once Member 4 has pushed their work to GitHub, Members 1, 2, and 3 should
+   **Pull** the updated files from the team's GitHub repo. Team members 1, 2,
+   and 3 should now have the narrative.
+ 
+Working in a team typically won't have rules this rigid. However, this is an
+introduction to using git and GitHub as a team and we wanted to prevent merge 
+conflicts. We'll learn how to handle merge conflicts in the next lab.
+   
+# Submission
+
+Knit to PDF to create a PDF document. Stage and commit all remaining changes, 
+and push your work to GitHub. Make sure all files are updated on your GitHub 
+repo.
+
+Please only upload your PDF document to Gradescope. Associate the "Overall"
+graded section with the first page of your PDF, and mark where each answer is 
+to the exercises. If any answer spans multiple pages, then mark all pages.
